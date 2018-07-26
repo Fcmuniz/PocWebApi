@@ -13,6 +13,7 @@ namespace PocVueWebApi.DAO
 
         public static List<Cliente> ListarClientes()
         {
+          
             using (var db = new LiteDatabase(arquivo))
             {
                 var ctx = db.GetCollection<Cliente>("clientes");
@@ -21,6 +22,25 @@ namespace PocVueWebApi.DAO
 
                 return ctx.FindAll().ToList();
             }
+
+
+        }
+
+
+        public static List<Cidades> ListarCidades()
+        {
+
+
+            using (var db = new LiteDatabase(arquivo))
+            {
+                var ctx = db.GetCollection<Cidades>("cidades");
+               
+                if (ctx.FindAll().Count() == 0)
+                    MassaDadosCidade();
+
+                return ctx.FindAll().ToList();
+            }
+
         }
 
         public static void InserirCliente(Cliente cli)
@@ -91,6 +111,109 @@ namespace PocVueWebApi.DAO
                     CPF = "333.333.333-33"
                 };
                 ctx.Insert(cliente);
+            }
+        }
+
+        private static void MassaDadosCidade()
+        {
+            using (var db = new LiteDatabase(arquivo))
+            {
+                var ctx = db.GetCollection<Cidades>("cidades");
+                var cidade = new Cidades()
+                {
+                    Id = 1,
+                    Nome = " Alberta",
+              
+                };
+                ctx.Insert(cidade);
+                cidade = new Cidades()
+                {
+                    Id = 2,
+                    Nome = "Colúmbia Britânica",
+                
+                };
+                ctx.Insert(cidade);
+                cidade = new Cidades()
+                {
+                    Id = 3,
+                    Nome = " Manitoba",
+                
+                };
+                ctx.Insert(cidade);
+                cidade = new Cidades()
+                {
+                    Id = 4,
+                    Nome = "New Brunswick",
+
+                };
+                ctx.Insert(cidade);
+                cidade = new Cidades()
+                {
+                    Id = 5,
+                    Nome = "Terra Nova e Labrador",
+
+                };
+                ctx.Insert(cidade);
+                cidade = new Cidades()
+                {
+                    Id = 60,
+                    Nome = "Nova Escócia",
+
+                };
+                ctx.Insert(cidade);
+                cidade = new Cidades()
+                {
+                    Id = 6,
+                    Nome = "Ontário",
+
+                };
+                ctx.Insert(cidade);
+                cidade = new Cidades()
+                {
+                    Id = 7,
+                    Nome = "Ilha do Príncipe Eduardo",
+
+                };
+                ctx.Insert(cidade);
+                cidade = new Cidades()
+                {
+                    Id = 8,
+                    Nome = "Quebec",
+
+                };
+                ctx.Insert(cidade);
+             
+                cidade = new Cidades()
+                {
+                    Id = 9,
+                    Nome = "Saskatchewan",
+
+                };
+                ctx.Insert(cidade);
+           
+                cidade = new Cidades()
+                {
+                    Id = 10,
+                    Nome = " Territórios do Noroeste",
+
+                };
+                ctx.Insert(cidade);
+               
+                cidade = new Cidades()
+                {
+                    Id = 11,
+                    Nome = "Nunavut",
+
+                };
+                ctx.Insert(cidade);
+             
+                cidade = new Cidades()
+                {
+                    Id = 12,
+                    Nome = "Yukon",
+
+                };
+                ctx.Insert(cidade);
             }
         }
     }

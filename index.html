@@ -32,7 +32,6 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Nome</th>
-                                <th>CPF</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -40,7 +39,6 @@
                             <tr v-for="(cli, index) in clientes" :key="cli.Id">
                                 <td>{{cli.Id}}</td>
                                 <td>{{cli.Nome}}</td>
-                                <td>{{cli.CPF}}</td>
                                 <td style="text-align:center">
                                     <v-icon small class="mr-2" v-on:click="ShowCli(cli.Id,cli.Nome,cli.CPF)">
                                         edit

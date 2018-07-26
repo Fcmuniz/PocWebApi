@@ -15,7 +15,7 @@ namespace PocVueWebApi.Controllers
     public class ClienteController : ApiController
     {
 
-        //[ResponseType(typeof(List<Cliente>))]
+        
         [ActionName("ListarClientes")]
         [HttpGet]
         public IEnumerable<Cliente> ListarClientes()
@@ -23,6 +23,20 @@ namespace PocVueWebApi.Controllers
             //return clientes;
             var cli = Contexto.ListarClientes();
             return cli.ToList();
+        }
+
+      
+      
+        [ActionName("ListarCidades")]
+        [HttpGet]
+        public IEnumerable<Cidades> Get(string q)
+        {
+            if (q == null)
+                q = "";
+          
+            //return clientes;
+            var cidade = Contexto.ListarCidades().Where(x => x.Nome.Contains(q)).ToList();
+            return cidade.ToList();
         }
 
         [Route("api/cliente/DelCli")]
