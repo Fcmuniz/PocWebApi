@@ -13,7 +13,7 @@ namespace PocVueWebApi.DAO
 
         public static List<Cliente> ListarClientes()
         {
-          
+           
             using (var db = new LiteDatabase(arquivo))
             {
                 var ctx = db.GetCollection<Cliente>("clientes");
@@ -34,7 +34,7 @@ namespace PocVueWebApi.DAO
             using (var db = new LiteDatabase(arquivo))
             {
                 var ctx = db.GetCollection<Cidades>("cidades");
-               
+
                 if (ctx.FindAll().Count() == 0)
                     MassaDadosCidade();
 
@@ -48,7 +48,7 @@ namespace PocVueWebApi.DAO
             using (var db = new LiteDatabase(arquivo))
             {
                 var ctx = db.GetCollection<Cliente>("clientes");
-             
+
                 var valor = 0;
                 foreach (var item in ctx.FindAll())
                 {
@@ -58,10 +58,10 @@ namespace PocVueWebApi.DAO
                         valor = item.Id;
                     }
                 }
-                cli.Id = valor+1;
+                cli.Id = valor + 1;
 
-                if(cli.Id != 0)
-                ctx.Insert(cli);
+                if (cli.Id != 0)
+                    ctx.Insert(cli);
             }
         }
 
@@ -84,6 +84,9 @@ namespace PocVueWebApi.DAO
                 //    ctx.Delete(cli);
             }
         }
+  
+
+
 
         private static void MassaDados()
         {
